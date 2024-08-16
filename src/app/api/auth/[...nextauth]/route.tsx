@@ -33,14 +33,13 @@ const authOptions = {
         }
         const confirmPassword = await bcrypt.compare(
           myPasswrod as string,
-          user.password
+          user.password as string
         );
-        if (!confirmPassword) {
-          return null;
+        if (user && confirmPassword) {
+          const { password, ...others } = user;
+          return others;
         }
-        const { password, ...others } = user;
-        // redirect("/profile");
-        return others;
+        return null;
       },
     }),
   ],

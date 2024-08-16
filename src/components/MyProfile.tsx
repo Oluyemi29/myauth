@@ -4,7 +4,7 @@ import React from "react";
 
 const MyProfile = () => {
   const { data: session, status } = useSession();
-  if (status === "unauthenticated")
+  if (status === "unauthenticated") {
     return (
       <div className="w-full h-screen flex flex-col justify-center items-center">
         {" "}
@@ -13,6 +13,7 @@ const MyProfile = () => {
         </h1>
       </div>
     );
+  }
 
   if (status === "loading") {
     return (
