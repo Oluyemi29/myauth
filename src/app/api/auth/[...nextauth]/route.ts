@@ -34,8 +34,7 @@ const authOptions = {
           user.password as string
         );
         if (user && confirmPassword) {
-          const { password, ...others } = user;
-          return others;
+          return user;
         }
         return null;
       },
