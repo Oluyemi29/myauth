@@ -1,11 +1,9 @@
-"use server";
-import prisma from "@/lib/db";
 import { AuthOptions } from "next-auth";
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import { User } from "@prisma/client";
-import { redirect } from "next/navigation";
+import { PrismaClient, User } from "@prisma/client";
+const prisma = new PrismaClient();
 
 const authOptions = {
   providers: [
@@ -69,4 +67,4 @@ const authOptions = {
 
 const handler = NextAuth(authOptions as AuthOptions);
 
-export { handler as POST, handler as GET };
+export { handler as GET, handler as POST };
